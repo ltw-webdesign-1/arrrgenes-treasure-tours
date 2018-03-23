@@ -1,0 +1,75 @@
+repo: 'arrrgenes-treasure-tours'
+canvasCourse: 'web-dev-2'
+
+inherit:
+  - naming-restrict-live
+  - git-10
+  - html
+  - css
+  - css-order-modules-grid-type-main
+  - modulifier
+  - gridifier-unrestricted
+  - typografier-unrestricted
+  - modulifier-list-group
+  - modulifier-buttons
+  - modulifier-embed
+  - google-fonts
+  - html-good-semantics
+  - nav-focus
+  - accessibility
+  - aria-landmarks
+  - main-link-focus
+  - screenshots-all
+
+html:
+  - path: 'index.html'
+
+css:
+  - path: 'css/main.css'
+  - path: 'css/modules.css'
+    locked: true
+  - path: 'css/grid.css'
+    locked: true
+  - path: 'css/type.css'
+    locked: true
+
+functionality:
+  - path: 'index.html'
+    tests:
+      - |
+        const rgb = function (rgbstr) {
+          const theColor = rgbstr.match(/rgba?\(([\d.]+), ([\d.]+), ([\d.]+)/);
+          theColor.shift();
+          return theColor;
+        };
+
+        const luminance = function (r, g, b) {
+          var a = [r, g, b].map((v) => {
+            v /= 255;
+            return v <= 0.03928 ? v / 12.92 : Math.pow( (v + 0.055) / 1.055, 2.4 );
+          });
+
+          return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+        };
+
+        const contrast = function (rgb1, rgb2) {
+          return (luminance(rgb1[0], rgb1[1], rgb1[2]) + 0.05) / (luminance(rgb2[0], rgb2[1], rgb2[2]) + 0.05);
+        };
+
+        const navLink = $('.nav a');
+        const navBg = css($('.masthead')).backgroundColor;
+        const bannerLink = $('.banner a');
+        const bannerText = $('.banner h2');
+        const bannerBg = (css($('.banner')).backgroundColor === 'rgba(0, 0, 0, 0)') ? css($('html')).backgroundColor : css($('.banner')).backgroundColor;
+
+        navLink.focus();
+
+        if (contrast(rgb(css(navLink).outlineColor), rgb(navBg)) < 4.5) return fail('The contrast of the `outline` for the navigation links isn’t enough compared to the `background-color`');
+
+        if (contrast(rgb(css(bannerText).outlineColor), rgb(bannerBg)) < 4.5) return fail('The contrast of the banner’s `<h2>` isn’t enough compared to the `background-color`—**double check what the banner looks like if the image doesn’t show**');
+
+        bannerLink.focus();
+
+        if (contrast(rgb(css(bannerLink).outlineColor), rgb(bannerBg)) < 4.5) return fail('The contrast of the `outline` for the banner button isn’t enough compared to the `background-color`—**double check what the banner looks like if the image doesn’t show**');
+
+        pass();
