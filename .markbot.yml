@@ -3,7 +3,7 @@ canvasCourse: 'web-dev-2'
 
 inherit:
   - naming-restrict-live
-  - git-10
+  - git-2
   - html
   - css
   - css-order-modules-grid-type-main
