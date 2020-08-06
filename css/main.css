@@ -1,95 +1,150 @@
 html {
+  box-sizing: border-box;
   background-color: #fff;
   font-family: "Libre Baskerville", serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
 .masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
   background-color: #522806;
   border-bottom: .3rem solid #bea59b;
   color: #fff;
+  font-size: 1.25rem;
 }
 
-.logo {
-  text-align: center;
+.masthead h1 {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
 }
 
-.logo-text {
-  display: inline-block;
+.masthead img {
+  width: 2em;
+  height: 2em;
+  margin-right: .5rem;
+}
+
+.masthead span {
   width: 9em;
 }
 
-.nav {
-  text-align: center;
+.nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
 }
 
 .nav a {
   color: #fff;
+  padding: .5em;
+  border-radius: 1em;
   text-decoration: none;
 }
 
-.nav a span {
-  border-bottom: .3rem solid #bea59b;
-}
-
-.nav a:hover span,
-.nav a:focus span {
-  border-bottom-color: #fff;
-}
-
 .banner {
-  min-height: 16em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "banner";
   color: #fff;
+  font-size: 1.5rem;
+}
+
+.banner img {
+  grid-area: banner;
+  width: 100%;
+}
+
+.banner div {
+  grid-area: banner;
+  align-self: center;
+  justify-self: center;
+  padding: 2rem 0;
+  max-width: 20em;
+  text-align: center;
+}
+
+.banner h2,
+.banner p {
+  margin: 0 0 1.5rem;
+}
+
+.banner a {
+  display: inline-block;
+  background-color: transparent;
+  padding: .5em 1.5em .6em;
+  border: .3rem solid #bea59b;
+  border-radius: 1em;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ship {
+  padding: 2rem;
 }
 
 .card {
-  min-height: 22em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  min-height: 34em;
   border: .3rem solid #bea59b;
-  border-radius: 4px;
+  border-radius: .75em;
+  font-size: 1.125rem;
+  text-align: center;
 }
 
-.btn-light {
+.card img {
+  width: 12em;
+  margin: 0 0 1.5rem;
+}
+
+.card h2 {
+  margin: 0 0 1.5rem;
+}
+
+.card p {
+  max-width: 28em;
+  margin: 0 0 1.5rem;
+}
+
+.card a {
+  display: inline-block;
   background-color: #bea59b;
-  border-color: #bea59b;
+  padding: .5em 1.5em .6em;
+  border-radius: 1em;
   color: #522806;
-}
-
-.btn-light:hover,
-.btn-light:focus {
-  background-color: #522806;
-  border-color: #522806;
-}
-
-.btn-banner {
-  border-color: #bea59b;
-  color: #fff;
-}
-
-.btn-banner:hover,
-.btn-banner:focus {
-  background-color: #bea59b;
-  border-color: #fff;
-  color: #522806;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .footer {
   background-color: #522806;
   border-top: .3rem solid #bea59b;
   color: #fff;
+  font-size: .875rem;
+  text-align: center;
+  padding: 1rem;
 }
 
-@media only screen and (min-width: 38em) {
-
-  .logo {
-    text-align: left;
-  }
-
-  .nav {
-    text-align: right;
-  }
-
-  .banner,
-  .card {
-    min-height: 0;
-  }
-
+.footer * {
+  margin: 0;
 }

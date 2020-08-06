@@ -1,7 +1,7 @@
 ---
 summary: 'Fix colour contrast & colour blindness related problems on a piratey tourism website.'
 time: '1 hour'
-deliverables: '1 HTML file, 4 CSS files, images'
+deliverables: '1 HTML file, 1 CSS file, images'
 ---
 
 # Arrrgene’s treasure tours

@@ -1,40 +1,34 @@
-repo: 'arrrgenes-treasure-tours'
-canvasCourse: 'web-dev-2'
+repo: "arrrgenes-treasure-tours"
+canvasCourse: "web-design-2"
 
 inherit:
   - naming-restrict-live
   - git-2
   - html
   - css
-  - css-order-modules-grid-type-main
-  - modulifier
-  - gridifier-unrestricted
-  - typografier-unrestricted
-  - modulifier-list-group
-  - modulifier-buttons
-  - modulifier-embed
   - google-fonts
   - html-good-semantics
   - nav-focus
-  - accessibility
   - aria-landmarks
   - main-link-focus
-  - screenshots-all
 
 html:
-  - path: 'index.html'
+  - path: "index.html"
+    hasNot:
+      - "img:not([alt])"
+      - check: 'img[alt=""]:not([role="presentation"]):not([aria-details])'
+        message: 'Is this image an important part of the content? If so it needs a descriptive `alt=""` attribute or the `aria-details` attribute. If it’s only for presentation add the attribute `role="presentation"`'
 
 css:
-  - path: 'css/main.css'
-  - path: 'css/modules.css'
-    locked: true
-  - path: 'css/grid.css'
-    locked: true
-  - path: 'css/type.css'
-    locked: true
+  - path: "css/main.css"
+
+screenshots:
+  - path: "index.html"
+    sizes: [800]
 
 functionality:
-  - path: 'index.html'
+  - path: "index.html"
+    label: "Contrast"
     tests:
       - |
         const rgb = function (rgbstr) {
