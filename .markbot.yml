@@ -1,5 +1,5 @@
 repo: "arrrgenes-treasure-tours"
-canvasCourse: "web-design-2"
+canvasCourse: "web-design-1"
 
 inherit:
   - naming-restrict-live
